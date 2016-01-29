@@ -3,5 +3,8 @@ class Card(object):
         self.suit = suit
         self.rank = rank
 
-    def print_card(self):
-        print self.suit, self.rank
+    def get_card(self):
+        return (self.rank, self.suit)
+
+    def get_card_string(self):
+        return self.rank + ' of ' + self.suit
