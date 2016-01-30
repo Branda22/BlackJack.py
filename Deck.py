@@ -30,20 +30,3 @@ class Deck(object):
     def remove_card_at_index(self, idx):
         return self.deck.pop(idx)
 
-    def deal_hand(self, num_cards):
-        hand = []
-        for i in xrange(0, num_cards):
-            idx = randint(0, len(self.deck))
-            card = self.remove_card_at_index(idx)
-            hand.append(card)
-        return hand
-
-    def deal_card(self):
-        idx = randint(0, len(self.deck))
-        return self.remove_card_at_index(idx)
-
-
-
-d = Deck()
-print d.deal_hand(3)
-d.print_cards_in_deck()
