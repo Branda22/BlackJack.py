@@ -1,4 +1,3 @@
-from random import randint
 from Card import Card
 
 
@@ -10,6 +9,9 @@ class Deck(object):
     def __init__(self):
         self.deck = []
         self.new_deck()
+
+    def __len__(self):
+        return len(self.deck)
 
     def new_deck(self):
         for suit in Deck.card_suit:
