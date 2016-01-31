@@ -34,12 +34,24 @@ class Game(object):
         print 'Let\'s play some Blackjack!'
 
         print 'Dealing your hand'
-        hand = self.dealer.deal_hand()
+        hand = self.dealer.deal_hand(2)
         print hand
         self.player.set_hand(hand)
+        print 'Dealing dealers hand'
+        dhand = self.dealer.deal_hand(2)
+        self.dealer.set_dealer_hand(dhand)
 
         while not self.game_over:
-            pass
+            print 'Your hand'
+            self.player.display_hand()
+            print '--------------------'
+            print 'The dealers hand'
+            self.dealer.display_hand()
+            print 'What would you like to do?'
+            print '1. HIT'
+            print '2. FOLD'
+            print '3. END'
+            choice = raw_input()
 
 
 

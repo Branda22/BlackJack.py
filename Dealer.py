@@ -23,6 +23,10 @@ class Dealer(object):
     def set_dealer_hand(self, hand):
         self.hand = hand
 
+    def display_hand(self):
+        for card in self.hand:
+            print card.get_card_string()
+
 
 
 

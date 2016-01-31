@@ -16,4 +16,9 @@ class Player(object):
     def clear_hand(self):
         self.hand = None
 
+    def display_hand(self):
+        for card in self.hand:
+            print card.get_card_string()
+
+
 
