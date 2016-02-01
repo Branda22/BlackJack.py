@@ -23,9 +23,12 @@ class Dealer(object):
     def set_dealer_hand(self, hand):
         self.hand = hand
 
-    def display_hand(self):
+    def display_hand(self, oneCard):
         for card in self.hand:
             print card.get_card_string()
+            if oneCard:
+                print 'XXXX'
+                break
 
 
 
