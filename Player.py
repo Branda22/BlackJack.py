@@ -18,6 +18,8 @@ class Player(object):
         self.hand = None
 
     def display_hand(self):
+        print 'Your hand'
+        print '--------------------\n'
         for card in self.hand:
             print card.get_card_string()
 

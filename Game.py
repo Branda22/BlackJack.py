@@ -24,7 +24,7 @@ class Game(object):
         else:
             self.game_loop()
 
-    def set_bet(self, amount):
+    def set_bet(self):
         bet = raw_input('Please enter your bet from 1 to {cash}'.format(cash=self.player.cash))
         try:
             bet = int(bet)
@@ -35,8 +35,11 @@ class Game(object):
             self.player.cash -= bet
             self.dealer.current_bet += bet
 
-    def check_for_21(self):
-        pass
+    def display_balance(self):
+        print 'Your balance \n'
+        print self.player.cash
+        print 'Dealers balance \n'
+        print self.dealer.register
 
     def check_win(self, player_hand, dealer_hand):
         if self.check_hand_value(player_hand) > self.check_hand_value(dealer_hand):
@@ -47,9 +50,6 @@ class Game(object):
     def hit(self):
         card = self.dealer.deal_card()
         self.player.add_card_to_hand(card)
-
-    def stop(self):
-        pass
 
     def check_hand_value(self, hand):
         total = 0
@@ -70,28 +70,40 @@ class Game(object):
 
     def check_bust(self, hand):
         if self.check_hand_value(hand) > 21:
+
             return True
         else:
             return False
 
+    def award_bet(self, to_who):
+        if to_who == 'dealer':
+            self.dealer.register += self.dealer.current_bet
+            self.dealer.current_bet = 0
+        else:
+            winning = self.dealer.current_bet * 2
+            self.dealer.register -= winning
+            self.player.cash += winning
+
+
     def game_loop(self):
         print 'Let\'s play some Blackjack!'
-
-        print 'Dealing your hand'
+        self.set_bet()
+        self.display_balance()
+        print '********* Dealing your hand ***********\n'
         hand = self.dealer.deal_hand(2)
-        print hand
         self.player.set_hand(hand)
-        print 'Dealing dealers hand'
+        self.player.display_hand()
+
+        print '********* Dealing dealers hand ***********\n'
         dhand = self.dealer.deal_hand(2)
         self.dealer.set_dealer_hand(dhand)
+        self.dealer.display_hand(True)
 
         while not self.game_over:
-            print 'Your hand'
-            print '--------------------'
+
             self.player.display_hand()
             print '\n'
-            print 'The dealers hand'
-            print '--------------------'
+
             self.dealer.display_hand(True)
             print 'What would you like to do?'
             print '1. HIT'
@@ -104,20 +116,26 @@ class Game(object):
                     self.player.display_hand()
                     if self.check_bust(self.player.hand):
                         print 'You busted!'
+                        self.award_bet('dealer')
+                        self.display_balance()
                         self.game_over = True
 
                 elif choice == 2:
                     print 'Let\'s see who won!'
                     if self.check_win(self.player.hand, self.dealer.hand):
+                        self.award_bet('player')
+                        self.display_balance()
                         print "Blackjack! Congratulations"
                     else:
+                        self.award_bet('dealer')
+                        self.display_balance()
                         print "The dealer has won"
 
                     self.game_over = True
 
         else:
             print 'The game has ended my dear'
-            print 'Would you like to play again?'
+            self.game_loop()
 
 g = Game()
 

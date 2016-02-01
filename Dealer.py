@@ -1,5 +1,4 @@
 from random import randint
-from Deck import Deck
 
 class Dealer(object):
 
@@ -25,6 +24,8 @@ class Dealer(object):
         self.hand = hand
 
     def display_hand(self, oneCard):
+        print 'The dealers hand'
+        print '--------------------\n'
         for card in self.hand:
             print card.get_card_string()
             if oneCard:
