@@ -1,8 +1,9 @@
 class Player(object):
 
-    def __init__(self):
+    def __init__(self, cash=100):
         self.name = ""
         self.hand = None
+        self.cash = cash
 
     def set_name(self, name):
         self.name = name

@@ -7,6 +7,7 @@ class Dealer(object):
         self.deck = deck
         self.register = register
         self.hand = None
+        self.current_bet = 0
 
     def deal_hand(self, num_cards):
         hand = []

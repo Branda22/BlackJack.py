@@ -24,6 +24,17 @@ class Game(object):
         else:
             self.game_loop()
 
+    def set_bet(self, amount):
+        bet = raw_input('Please enter your bet from 1 to {cash}'.format(cash=self.player.cash))
+        try:
+            bet = int(bet)
+        except:
+            print 'You did not enter a number.'
+
+        if bet in range(1, self.player.cash + 1):
+            self.player.cash -= bet
+            self.dealer.current_bet += bet
+
     def check_for_21(self):
         pass
 
