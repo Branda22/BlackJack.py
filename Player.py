@@ -19,9 +19,10 @@ class Player(object):
 
     def display_hand(self):
         print 'Your hand'
-        print '--------------------\n'
+        print '--------------------'
         for card in self.hand:
             print card.get_card_string()
+        print '\n'
 
 
 

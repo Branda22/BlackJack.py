@@ -93,12 +93,12 @@ class Game(object):
         hand = self.dealer.deal_hand(2)
         self.player.set_hand(hand)
         self.player.display_hand()
-
+        print '\n'
         print '********* Dealing dealers hand ***********\n'
         dhand = self.dealer.deal_hand(2)
         self.dealer.set_dealer_hand(dhand)
         self.dealer.display_hand(True)
-
+        print '******************************************'
         while not self.game_over:
 
             self.player.display_hand()
@@ -139,4 +139,3 @@ class Game(object):
             self.game_loop()
 
 g = Game()
-

@@ -25,12 +25,13 @@ class Dealer(object):
 
     def display_hand(self, oneCard):
         print 'The dealers hand'
-        print '--------------------\n'
+        print '--------------------'
         for card in self.hand:
             print card.get_card_string()
             if oneCard:
                 print 'XXXX'
                 break
+        print '\n'
 
 
 
