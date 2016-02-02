@@ -126,11 +126,12 @@ class Game(object):
                         self.award_bet('player')
                         self.display_balance()
                         print "Blackjack! Congratulations"
+                        
                     else:
                         self.award_bet('dealer')
                         self.display_balance()
                         print "The dealer has won"
-
+                    self.dealer.display_hand(False)
                     self.game_over = True
 
         else:
